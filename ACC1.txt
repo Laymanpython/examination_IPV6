@@ -1,0 +1,34 @@
+system-view
+
+undo info-center enable 
+
+sysname ACC1
+
+
+vlan batch 10 20
+
+interface Ethernet 0/0/1 
+
+port link-type access 
+
+port default vlan 10 
+
+quit
+
+
+interface Ethernet 0/0/2 
+
+port link-type access 
+
+port default vlan 20 
+
+quit 
+
+
+interface Ethernet 0/0/22
+
+port link-type trunk 
+
+port trunk allow-pass vlan 10 20 
+
+quit

@@ -1,0 +1,84 @@
+system-view
+
+undo info-center enable
+
+sysname AGG1
+
+
+ipv6
+
+vlan batch 10 20 50 4001
+
+
+interface Ethernet 0/0/22
+
+port link-type trunk
+
+port trunk allow-pass vlan 10 20
+
+quit
+
+interface Ethernet 0/0/10
+
+port link-type access 
+
+port default vlan 50 
+
+quit
+
+
+interface vlanif 10
+
+ipv6 enable
+
+ipv6 address fc00:10::ffff 64
+
+quit
+
+interface vlanif 20
+
+ipv6 enable
+
+ipv6 address fc00:20::ffff 64
+
+quit
+
+interface vlanif 50
+
+ipv6 enable
+
+ipv6 address fc00:50::ffff 64
+
+quit
+
+
+interface Eth-Trunk 1 
+
+trunkport Ethernet 0/0/20
+
+trunkport Ethernet 0/0/21 
+
+port link-type trunk
+
+port trunk allow-pass vlan 4001
+
+quit
+
+
+interface vlanif 4001
+
+ipv6 enable
+
+ipv6 address fc00:1::1 64
+
+quit
+
+
+ipv6 route-static fc00:100:: 64 fc00:1::2
+
+
+ipv6 route-static fc00:2:: 64 fc00:1::2
+
+
+
+

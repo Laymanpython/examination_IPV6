@@ -1,0 +1,16 @@
+system-view
+
+sysname device2
+
+ipv6
+
+interface gigabitethernet 0/0/0
+
+ipv6 enable
+
+ipv6 address auto global default
+
+quit
+
+
+

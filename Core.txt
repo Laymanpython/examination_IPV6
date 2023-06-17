@@ -1,0 +1,63 @@
+system-view 
+
+undo info-center enable
+
+sysname Core
+
+
+vlan batch 10 20 50 100 4001 4002
+
+interface Eth-Trunk 1
+
+trunkport Ethernet 0/0/20
+
+trunkport Ethernet 0/0/21
+
+port link-type trunk
+
+port trunk allow-pass vlan 10 20 50 4001
+
+quit
+
+
+interface Eth-Trunk 2
+
+trunkport Ethernet 0/0/18
+
+trunkport Ethernet 0/0/19
+
+port link-type trunk
+
+port trunk allow-pass vlan 100 4002
+
+quit
+
+
+ipv6
+
+interface vlanif 4001
+
+ipv6 enable
+
+ipv6 address fc00:1::2 64
+
+quit
+
+interface vlanif 4002
+
+ipv6 enable
+
+ipv6 address fc00:2::2 64
+
+quit
+
+
+ipv6 route-static fc00:10:: 64 fc00:1::1
+
+ipv6 route-static fc00:20:: 64 fc00:1::1
+
+ipv6 route-static fc00:100:: 64 fc00:2::1
+
+ipv6 route-static fc00:50:: 64 fc00:1::1
+
+
